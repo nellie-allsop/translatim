@@ -7,17 +7,24 @@ function App() {
 	const [to, setTo] = useState("ar");
 	const [word, setWord] = useState("");
 	const [translation, setTranslation] = useState("");
+  const [image, setImage] = useState("")
 
 	async function handleTranslate(event) {
 		event.preventDefault();
 		const API = `http://localhost:8080/translate?word=${word}&from=${from}&to=${to}`;
 		const res = await axios.get(API);
 		console.log(res.data);
-    setTranslation(res.data.translation)
+		setTranslation(res.data.translation);
 	}
+
+  async function handleImage(event){
+    event.preventDefault()
+    const API = `http://`
+  }
 
 	return (
 		<>
+    <h1>Translations</h1>
 			<form onSubmit={handleTranslate}>
 				<div className="container">
 					<select onChange={(event) => setFrom(event.target.value)}>
@@ -41,8 +48,14 @@ function App() {
 						<option value="es">Spanish</option>
 						<option value="tr">Turkish</option>
 					</select>
-					<div className="output">{translation}</div>
+          {translation && (<div className="output"><p>The translation is {translation}</p></div>)}
+          {translation && (<div className="image">
+            {/* I want an image here based on the 'translation' part of the object from myMemory */}
+          <p> {image} this is where the picture will go</p>
+          <img src="url from unsplash"/>
+          </div>)}
 				</div>
+        <br />
 				<button>Submit</button>
 			</form>
 		</>
