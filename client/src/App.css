@@ -1,14 +1,18 @@
+* {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  box-sizing: border-box;
+}
+
 body {
 	display: grid;
   justify-content: center;
-}
-
-* {
-	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  border: 50px;
+  margin: 50px;
 }
 
 h1 {
 	text-align: center;
+  color: #e76f51;
 }
 
 img {
@@ -22,4 +26,8 @@ img {
 
 .content {
   display: flex;
+}
+
+button{
+  background-color: #2a9d8f;
 }

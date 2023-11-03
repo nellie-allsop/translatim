@@ -21,7 +21,7 @@ app.get("/translate", async (request, response) => {
 	const res_mymemory = await axios.get(API_mymemory);
 
 	const API_unsplash = `https://api.unsplash.com/search/photos?client_id=${process.env.UNSPLASH_ACCESS_KEY}&query=${res_mymemory.data.responseData.translatedText}`;
-	console.log(API_unsplash);
+	// console.log(API_unsplash);
 	const res_unsplash = await axios.get(API_unsplash);
 
 	const wrangledData = {
