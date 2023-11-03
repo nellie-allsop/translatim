@@ -15,20 +15,19 @@ app.get("/translate", async (request, response) => {
 	// const to = request.query.to;
 
 	// destructure all the properties from request.query into variables
-	const { word, from, to, image } = request.query;
+	const { word, from, to } = request.query;
 
-	const API = `https://api.mymemory.translated.net/get?q=${word}&langpair=${from}|${to}`;
+	const API_mymemory = `https://api.mymemory.translated.net/get?q=${word}&langpair=${from}|${to}`;
+	const res_mymemory = await axios.get(API_mymemory);
 
-  const API2 = `https://api.unsplash.com/photos/random`;
-
-	const res = await axios.get(API);
-
-const res2 = await axios.get(API2)
+	const API_unsplash = `https://api.unsplash.com/search/photos?client_id=${process.env.UNSPLASH_ACCESS_KEY}&query=${res_mymemory.data.responseData.translatedText}`;
+	console.log(API_unsplash);
+	const res_unsplash = await axios.get(API_unsplash);
 
 	const wrangledData = {
-		translation: res.data.responseData.translatedText,
-		match: res.data.responseData.match,
-    res2.
+		translation: res_mymemory.data.responseData.translatedText,
+		match: res_mymemory.data.responseData.match,
+		image: res_unsplash.data.results[0].urls.regular,
 	};
 
 	response.json(wrangledData);

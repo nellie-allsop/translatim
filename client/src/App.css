@@ -1,0 +1,25 @@
+body {
+	display: grid;
+  justify-content: center;
+}
+
+* {
+	font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+h1 {
+	text-align: center;
+}
+
+img {
+	max-width: 1000px;
+	max-height: 1000px;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 2;
+  grid-row-end: 3;
+}
+
+.content {
+  display: flex;
+}
